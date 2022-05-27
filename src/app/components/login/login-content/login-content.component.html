@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="loginForm" (keyup.enter)="login()">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input  matInput required formControlName="username" />
+          <mat-icon  *ngIf="loginForm.controls['username'].valid && loginForm.controls['username'].touched " style="color: seagreen;" matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-icon *ngIf="loginForm.controls['username'].invalid && loginForm.controls['username'].touched  " style="color: red;" matSuffix>sentiment_very_dissatisfied</mat-icon>
+          <mat-hint style="color: red;" *ngIf="loginForm.controls['username'].invalid && loginForm.controls['username'].touched ">Geçerli bir email girilmelidir.</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput required formControlName="password" />
+          <mat-icon  *ngIf="loginForm.controls['password'].valid && loginForm.controls['password'].touched " style="color: seagreen;" matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-icon *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched  " style="color: red;" matSuffix>sentiment_very_dissatisfied</mat-icon>
+          <mat-hint style="color: red;" *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched ">Şifre 6 karakterden uzun olmalıdır.</mat-hint>
+        </mat-form-field>
+      </p>
+    </form>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-stroked-button color="success" (click)="login()">Login</button>
+  </mat-card-actions>
+</mat-card>

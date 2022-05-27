@@ -1,0 +1,153 @@
+<h1 mat-dialog-title style="color: red">Ürün Güncelle</h1>
+<div mat-dialog-content>
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="productUpdateForm" (keyup.enter)="update()">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Ürün Adı</mat-label>
+            <input formControlName="name" matInput required />
+            <mat-icon
+              *ngIf="
+                productUpdateForm.controls['name'].valid &&
+                productUpdateForm.controls['name'].touched
+              "
+              style="color: seagreen"
+              matSuffix
+              >sentiment_very_satisfied</mat-icon
+            >
+            <mat-icon
+              *ngIf="
+                productUpdateForm.controls['name'].invalid &&
+                productUpdateForm.controls['name'].touched
+              "
+              style="color: red"
+              matSuffix
+              >sentiment_very_dissatisfied</mat-icon
+            >
+            <mat-hint
+              style="color: red"
+              *ngIf="
+                productUpdateForm.controls['name'].invalid &&
+                productUpdateForm.controls['name'].touched
+              "
+            >
+              Ürün adı minimum 2, maksimum 150 karakter olmalıdır.
+            </mat-hint>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Sezon</mat-label>
+            <input type="number" formControlName="season" matInput required />
+            <mat-icon
+              *ngIf="
+                productUpdateForm.controls['season'].valid &&
+                productUpdateForm.controls['season'].touched
+              "
+              style="color: seagreen"
+              matSuffix
+              >sentiment_very_satisfied</mat-icon
+            >
+            <mat-icon
+              *ngIf="
+                productUpdateForm.controls['season'].invalid &&
+                productUpdateForm.controls['season'].touched
+              "
+              style="color: red"
+              matSuffix
+              >sentiment_very_dissatisfied</mat-icon
+            >
+            <mat-hint
+              style="color: red"
+              *ngIf="
+                productUpdateForm.controls['season'].invalid &&
+                productUpdateForm.controls['season'].touched
+              "
+            >
+              Sezon 2016'dan eski olamaz.
+            </mat-hint>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Stok</mat-label>
+            <input formControlName="stock" matInput required />
+            <mat-icon
+              *ngIf="
+                productUpdateForm.controls['stock'].valid &&
+                productUpdateForm.controls['stock'].touched
+              "
+              style="color: seagreen"
+              matSuffix
+              >sentiment_very_satisfied</mat-icon
+            >
+            <mat-icon
+              *ngIf="
+                productUpdateForm.controls['stock'].invalid &&
+                productUpdateForm.controls['stock'].touched
+              "
+              style="color: red"
+              matSuffix
+              >sentiment_very_dissatisfied</mat-icon
+            >
+            <mat-hint
+              style="color: red"
+              *ngIf="
+                productUpdateForm.controls['unitPrice'].invalid &&
+                productUpdateForm.controls['stock'].touched
+              "
+            >
+              Stok bilgisi girilmelidir.
+            </mat-hint>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Fiyat</mat-label>
+            <input formControlName="unitPrice" matInput required />
+            <mat-icon
+              *ngIf="
+                productUpdateForm.controls['unitPrice'].valid &&
+                productUpdateForm.controls['unitPrice'].touched
+              "
+              style="color: seagreen"
+              matSuffix
+              >sentiment_very_satisfied</mat-icon
+            >
+            <mat-icon
+              *ngIf="
+                productUpdateForm.controls['unitPrice'].invalid &&
+                productUpdateForm.controls['unitPrice'].touched
+              "
+              style="color: red"
+              matSuffix
+              >sentiment_very_dissatisfied</mat-icon
+            >
+            <mat-hint
+              style="color: red"
+              *ngIf="
+                productUpdateForm.controls['unitPrice'].invalid &&
+                productUpdateForm.controls['unitPrice'].touched
+              "
+            >
+              Ürünün birim fiyat girilmeli ve 0'dan büyük olmalıdır.
+            </mat-hint>
+          </mat-form-field>
+        </p>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button color="success" [mat-dialog-close]>Vazgeç</button>
+  <button
+    mat-stroked-button
+    color="warn"
+    (click)="update()"
+    [mat-dialog-close]
+    cdkFocusInitial
+  >
+    Onayla
+  </button>
+</div>
